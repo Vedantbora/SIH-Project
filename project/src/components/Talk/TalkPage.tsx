@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Mic, MicOff, Volume2, VolumeX, Send, AlertTriangle, Heart, Globe } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { RiskLevel } from '../../types';
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL, buildApiUrl, getAuthHeaders } from '../../config/api';
 
 // Extend Window interface for speech recognition
 declare global {
@@ -119,11 +119,9 @@ const TalkPage: React.FC = () => {
   useEffect(() => {
     const getWelcomeMessage = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/chat/starter?language=${selectedLanguage}`, {
+        const response = await fetch(buildApiUrl(`/chat/starter?language=${selectedLanguage}`), {
           method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
+          headers: getAuthHeaders()
         });
         if (!response.ok) throw new Error('Failed to get welcome message');
         const data = await response.json();
@@ -231,12 +229,9 @@ const TalkPage: React.FC = () => {
 
     // Real AI processing with MANAS AI
     try {
-      const response = await fetch(`${API_BASE_URL}/chat/message`, {
+      const response = await fetch(buildApiUrl('/chat/message'), {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({
           message: text,
           preferredLanguage: selectedLanguage !== 'auto' ? selectedLanguage : undefined
