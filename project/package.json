@@ -10,21 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^9.122.0",
-    "@react-three/fiber": "^8.18.0",
-    "@readyplayerme/visage": "^6.16.0",
-    "@supabase/supabase-js": "^2.57.4",
-    "@types/node": "^24.5.2",
-    "@types/three": "^0.180.0",
-    "clsx": "^2.1.1",
-    "framer-motion": "^12.23.16",
-    "lucide-react": "^0.344.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^7.9.1",
-    "recharts": "^3.2.1",
-    "three": "^0.160.1",
-    "zustand": "^5.0.8"
+  "@react-three/drei": "9.108.4",
+  "@readyplayerme/visage": "^6.16.0",
+  "@hookform/resolvers": "^5.2.1",
+  "@supabase/supabase-js": "^2.57.2",
+  "framer-motion": "^12.23.12",
+  "lucide-react": "^0.542.0",
+  "react-hook-form": "^7.62.0",
+  "react-hot-toast": "^2.6.0",
+  "react-router-dom": "^7.8.2"
+}
+
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
